@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use haml for templates
 gem 'haml'
-
+gem 'rspec'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -57,7 +57,9 @@ group :test do
   gem 'launchy'          # a useful debugging aid for user stories
   gem 'database_cleaner' # to clear Cucumber's test database between runs
   gem 'cucumber-rails', :require => false
-  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions 
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
