@@ -252,3 +252,13 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+When /^There are some movies in database$/ do
+  movies = [
+    {title: "Star Wars", release_date: "25/4/1977", rating: "PG"},
+    {title: 'Aladdin', rating: 'G', release_date: '25-Nov-1992'},
+  ]
+  movies.each do |movie|
+    Movie.create!(movie)
+  end
+end
