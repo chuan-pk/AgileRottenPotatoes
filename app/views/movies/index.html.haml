@@ -1,2 +1,17 @@
 %h1 All movies
 %a{class: "uk-button uk-button-primary", href: "movies/new"} Add new movie
+
+%table#movies{class: "uk-table uk-table-divider", :id => "movies"}
+  %thead
+    %tr
+      %th Movie Title
+      %th Rating
+      %th Release Date
+      %th More Info
+  %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= movie.title 
+        %td= movie.rating
+        %td= movie.release_date.to_date
+        %td= link_to "More about #{movie.title}", movie_path(movie)

@@ -11,4 +11,8 @@
         %div{class:"uk-navbar-item"}
           %a{href: "/", class: "uk-navbar-item uk-logo"} RottenPotatoes!
     %div{class: "uk-container"}
+      - if flash[:notice]
+        #notice.message= flash[:notice]
+      - elsif flash[:warning]
+        #warning.message= flash[:warning]
       = yield
