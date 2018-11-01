@@ -33,6 +33,12 @@ RSpec.describe MoviesController, :type => :controller do
       get :show, :params => {id: 1}
       expect(response).to render_template("show")
     end
-  end
+  
+    
+  describe "Delete movie" do
+    it "Should recieve DELETE request" do
+    end
+    it "Should redirect to movies_path" do
+    end
 
 end
