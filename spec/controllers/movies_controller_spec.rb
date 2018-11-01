@@ -22,7 +22,7 @@ RSpec.describe MoviesController, :type => :controller do
       expect(response).to render_template("new")
     end
     it "Shoud save POST request to Database" do
-      post :create, :params => {:movie => {title: "Star Wars", release_date: "25/4/1977", rating: "PG"}}
+      post :create, :params => {:movie => {title: "Star Wars", release_date: "25/4/1977", rating: "PG", description: "..."}}
       movie = Movie.find(1)
       expect(movie.reload.title).to eq('Star Wars')
     end
@@ -57,8 +57,9 @@ RSpec.describe MoviesController, :type => :controller do
     it "Should recieve PUT request and save update in database" do
       movie = Movie.create!({title: "Spirit Away", release_date: "20/9/2001", rating: "PG"})
       expect(movie.reload.title).to eq('Spirit Away')
-      put :update, :params => {:id => movie.id, :movie => {title: "Spirited Away"}}
+      put :update, :params => {:id => movie.id, :movie => {title: "Spirited Away", description: "..."}}
       expect(movie.reload.title).to eq('Spirited Away')
+      expect(movie.reload.description).to eq('...')
     end
     it "Should render correct template" do
       movie = Movie.create!({title: "Spirit Away", release_date: "20/9/2001", rating: "PG"})

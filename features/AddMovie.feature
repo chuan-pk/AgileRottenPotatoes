@@ -6,6 +6,7 @@ Scenario: Add a movie
   Then I should be on the Create New Movie page
   When I fill in "Title" with "Star Wars"
   And I select "PG-13" from "Rating"
+  And I fill in "Description" with "Star Wars is an American epic space opera franchise."
   And I press "Save Changes"
   Then I should be on the Star Wars Detail page
   And I should see "Details about Star Wars"

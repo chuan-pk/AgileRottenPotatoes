@@ -12,6 +12,7 @@ Scenario: Add new movie to database but spell the name wrong
   Given I am on the Star Wars Detail page
   And I press "Edit info"
   Then I fill in "Title" with "Star Wars"
+  And I fill in "Description" with "Star Wars is an American epic space opera franchise."
   And I press "Save Changes"
   Then I should be on the Star Wars Detail page
   And I should see "Details about Star Wars"
