@@ -25,4 +25,14 @@ RSpec.describe MoviesController, :type => :controller do
     end
   end
 
+  describe "Show movie" do
+    it "Should render correct template" do
+      Movie.create!({title: "Star Wars", release_date: "25/4/1977", rating: "PG"})
+      movie = Movie.find(1)
+
+      get movie_path(movie)
+      expect(response).to render_template("show")
+    end
+  end
+
 end
