@@ -2,10 +2,17 @@ require 'rails_helper'
 
 RSpec.describe MoviesController, :type => :controller do
 
-  describe "GET index" do
+  describe "Movies index" do
     it "Should render correct template" do
       get :index
       expect(response).to render_template("index")
+    end
+    it "Should sort by aphabet" do
+      movie1 = Movie.create!({title: "Star Wars", release_date: "25/4/1977", rating: "PG"})
+      movie2 = Movie.create!({title: "Aladdin", release_date: "25/11/1992", rating: "G"})
+      movies = Movie.all.sort_by{|m| m.title}
+      expect(movies[0].title).to eq(movie2.title)
+      expect(movies[1].title).to eq(movie1.title)
     end
   end
 

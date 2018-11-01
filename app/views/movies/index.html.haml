@@ -4,13 +4,15 @@
 %table#movies{class: "uk-table uk-table-divider", :id => "movies"}
   %thead
     %tr
+      %th 
       %th Movie Title
       %th Rating
       %th Release Date
       %th More Info
   %tbody
-    - @movies.each do |movie|
+    - @movies.each_with_index do |movie, index|
       %tr
+        %td= index + 1
         %td= movie.title 
         %td= movie.rating
         %td= movie.release_date.to_date
