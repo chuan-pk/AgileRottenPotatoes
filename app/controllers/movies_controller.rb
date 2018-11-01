@@ -23,6 +23,16 @@ class MoviesController < ApplicationController
     @movie.destroy
     redirect_to movies_path
   end
+  
+  def edit
+    @movie = Movie.find params[:id]
+  end
+
+  def update
+    @movie = Movie.find params[:id]
+    @movie.update_attributes(allowed_params)
+    redirect_to movies_path
+  end
 
   def allowed_params
     params.require(:movie)

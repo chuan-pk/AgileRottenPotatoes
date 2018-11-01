@@ -11,6 +11,8 @@ Scenario: Add new movie to database but spell the name wrong
   #edit movie
   Given I am on the RottenPotatoes home page
   When I follow "More about Spirit Away"
+  And I press "Edit info"
   Then I fill in "Title" with "Spirited Away"
   And I press "Save Changes"
-  
+  Then I should be on the RottenPotatoes home page
+  And I should see "Spirited Away"
