@@ -1,6 +1,6 @@
 %h2 Edit Movie
 
-= form_tag movies_path, :method => :post do
+= form_tag movie_path(@movie), :method => :put do
   %div{class: "uk-width-1-4"}
     = label :movie, :title, 'Title'
     = text_field :movie, 'title', class: "uk-input"

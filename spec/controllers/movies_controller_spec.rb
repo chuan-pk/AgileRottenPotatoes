@@ -21,7 +21,7 @@ RSpec.describe MoviesController, :type => :controller do
     end
     it "Should redirect to movies_path" do
       post :create, :params => {:movie => {title: "Star Wars", release_date: "25/4/1977", rating: "PG"}}
-      expect(response).to redirect_to(movies_path)
+      expect(response).to redirect_to('/movies/1')
     end
   end
 
@@ -61,7 +61,7 @@ RSpec.describe MoviesController, :type => :controller do
     it "Should redirect to edit_movie_path" do
       movie = Movie.create!({title: "Spirit Away", release_date: "20/9/2001", rating: "PG"})
       put :update, :params => {:id => movie.id, :movie => {title: "Spirited Away"}}
-      expect(response).to redirect_to(movies_path)
+      expect(response).to redirect_to(movie_path(movie))
     end
   end
   
