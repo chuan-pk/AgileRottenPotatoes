@@ -33,12 +33,36 @@ RSpec.describe MoviesController, :type => :controller do
       get :show, :params => {id: 1}
       expect(response).to render_template("show")
     end
-  
+  end
     
   describe "Delete movie" do
     it "Should recieve DELETE request" do
     end
     it "Should redirect to movies_path" do
     end
+  end
 
+  describe "Edit movie" do
+    it "Should recieve PUT request and save update in database" do
+      Movie.create!({title: "Spirit Away", release_date: "20/9/2001", rating: "PG"})
+      movie = Movie.find(1)
+      expect(movie.reload.title).to eq('Spirit Away')
+      
+      put :update, :params => {:id => 1, :movie => {title: "Spirited Away"}}
+      expect(movie.reload.title).to eq('Spirited Away')
+    end
+    it "Should render correct template" do
+      Movie.create!({title: "Spirit Away", release_date: "20/9/2001", rating: "PG"})
+      
+      get :edit, :params => {id: 1}
+      expect(response).to render_template("edit")
+    end
+    it "Should redirect to edit_movie_path" do
+      Movie.create!({title: "Spirit Away", release_date: "20/9/2001", rating: "PG"})
+      
+      put :update, :params => {:id => 1, :movie => {title: "Spirited Away"}}
+      expect(response).to redirect_to(movies_path)
+    end
+  end
+  
 end
