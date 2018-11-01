@@ -12,3 +12,4 @@
     = date_select(:movie, :release_date, {start_year: 1930, end_year: Date.today.year}, {:class => "uk-select"})
   %br
   = submit_tag 'Save Changes', :class => "uk-button uk-button-primary uk-width-1-6"
+  = button_to('Cancel', movies_path, :method => :get, class: "uk-button uk-button-default uk-width-1-6") 
