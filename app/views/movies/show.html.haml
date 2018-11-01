@@ -1,0 +1,18 @@
+%h2 Details about #{@movie.title}
+%ul#details
+  %li
+    Rating:
+    = @movie.rating
+  %li
+    Released on:
+    = @movie.release_date.to_date
+ 
+%h3 Description:
+ 
+%p#description= @movie.description
+
+%hr{class: "uk-divider-small"}
+
+= button_to('Edit info', edit_movie_path(@movie), :method => :get, class: "uk-button uk-button-primary uk-width-1-6") 
+= button_to('Delete', movie_path(@movie), :method => :delete, class: "uk-button uk-button-danger uk-width-1-6")
+= button_to('Back to movie list', movies_path, :method => :get, class: "uk-button uk-button-default uk-width-1-6")

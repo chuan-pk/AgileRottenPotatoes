@@ -20,7 +20,10 @@ module NavigationHelpers
       '/movies'  
     when /^the Create New Movie page/
       '/movies/new' 
-    
+    when /^the Star Wars Detail page/
+      '/movies/1'
+
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
