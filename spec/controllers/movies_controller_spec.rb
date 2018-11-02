@@ -30,6 +30,13 @@ RSpec.describe MoviesController, :type => :controller do
       post :create, :params => {:movie => {title: "Star Wars", release_date: "25/4/1977", rating: "PG"}}
       expect(response).to redirect_to('/movies/1')
     end
+    it "Should create a valid movie" do
+      # create blank title movie
+      post :create, :params => {:movie => {title: "", release_date: "25/4/1977", rating: "PG"}}
+      # invalid date
+      post :create, :params => {:movie => {title: "Old movie", release_date: "25/4/1900", rating: "PG"}}
+      expect(Movie.all.count).to eq(0)
+    end
   end
 
   describe "Show movie" do
@@ -70,6 +77,11 @@ RSpec.describe MoviesController, :type => :controller do
       movie = Movie.create!({title: "Spirit Away", release_date: "20/9/2001", rating: "PG"})
       put :update, :params => {:id => movie.id, :movie => {title: "Spirited Away"}}
       expect(response).to redirect_to(movie_path(movie))
+    end
+    it "Should save a valid movie" do
+      movie = Movie.create!({title: "Spirited Away", release_date: "20/9/2001", rating: "PG"})
+      put :update, :params => {:id => movie.id, :movie => {title: ""}}
+      expect(Movie.find(movie.id).title).to eq("Spirited Away")
     end
   end
   

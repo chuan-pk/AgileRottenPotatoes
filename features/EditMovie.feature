@@ -28,3 +28,13 @@ Scenario: Cancel edit movie
   And I press "Edit info"
   And I press "Cancel"
   Then I should be on the Star Wars Detail page
+
+Scenario: Edit a invalid movie
+  When There are some movies in database
+  Given I am on the Star Wars Detail page
+  And I press "Edit info"
+  #title should not blank
+  When I fill in "Title" with "" 
+  And I press "Save Changes"
+  #re render movie edit page
+  Then I should be on the Star Wars Edit page

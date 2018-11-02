@@ -20,3 +20,11 @@ Scenario: Cancel a movie
   And I press "Cancel"
   Then I should be on the RottenPotatoes home page
   And I should not see "Star Wars"
+
+Scenario: Add a invalid movie
+  Given I am on the RottenPotatoes home page
+  #title should not blank
+  When I follow "Add new movie"
+  And I press "Save Changes"
+  #when invalid re render new page
+  Then I should be on the Add movie page
