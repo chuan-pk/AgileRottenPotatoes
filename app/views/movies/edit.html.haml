@@ -3,4 +3,4 @@
 = form_tag movie_path(@movie), :method => :put do
   =render(:partial => "movie_form")  
   = submit_tag 'Save Changes', :class => "uk-button uk-button-primary uk-width-1-6"
-  = button_to('Cancel', movie_path(@movie), :method => :get, class: "uk-button uk-button-default uk-width-1-6")
+  = link_to('Cancel', movie_path(@movie), class: "uk-button uk-button-default uk-width-1-6")

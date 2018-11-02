@@ -15,7 +15,6 @@ Scenario: Add new movie to database but spell the name wrong
   And I fill in "Description" with "Star Wars is an American epic space opera franchise."
   And I press "Save Changes"
   Then I should be on the Star Wars Detail page
-  And I should see "Details about Star Wars"
 
 Scenario: Cancel edit movie
   Given I am on the RottenPotatoes home page
@@ -26,7 +25,7 @@ Scenario: Cancel edit movie
   And I press "Save Changes"
   Given I am on the Star Wars Detail page
   And I press "Edit info"
-  And I press "Cancel"
+  And I follow "Cancel"
   Then I should be on the Star Wars Detail page
 
 Scenario: Edit a invalid movie
@@ -37,4 +36,4 @@ Scenario: Edit a invalid movie
   When I fill in "Title" with "" 
   And I press "Save Changes"
   #re render movie edit page
-  Then I should be on the Star Wars Edit page
+  Then I should see "Edit Movie"

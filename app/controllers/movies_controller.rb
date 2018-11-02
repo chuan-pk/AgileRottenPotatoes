@@ -14,8 +14,12 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.create!(allowed_params)
-    redirect_to movie_path(@movie)
+    @movie = Movie.new(allowed_params)
+    if @movie.save
+      redirect_to movie_path(@movie)      
+    else
+      render 'new'
+    end
   end
 
   def allowed_params
@@ -28,8 +32,11 @@ class MoviesController < ApplicationController
 
   def update
     @movie = Movie.find(params[:id])
-    @movie.update_attributes!(allowed_params)
-    redirect_to movie_path(@movie)
+    if @movie.update_attributes(allowed_params)
+      redirect_to movie_path(@movie)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

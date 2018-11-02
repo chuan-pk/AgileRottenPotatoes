@@ -17,7 +17,7 @@ Scenario: Cancel a movie
   Then I should be on the Create New Movie page
   When I fill in "Title" with "Star Wars"
   And I select "PG-13" from "Rating"
-  And I press "Cancel"
+  And I follow "Cancel"
   Then I should be on the RottenPotatoes home page
   And I should not see "Star Wars"
 
@@ -27,4 +27,4 @@ Scenario: Add a invalid movie
   When I follow "Add new movie"
   And I press "Save Changes"
   #when invalid re render new page
-  Then I should be on the Add movie page
+  Then I should see "Create New Movie"
