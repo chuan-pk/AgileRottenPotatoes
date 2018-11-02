@@ -1,0 +1,7 @@
+- movies.each_with_index do |movie, index|
+  %tr
+    %td= index + 1
+    %td= movie.title 
+    %td= movie.rating
+    %td= movie.release_date.to_date
+    %td= link_to "More about #{movie.title}", movie_path(movie)
