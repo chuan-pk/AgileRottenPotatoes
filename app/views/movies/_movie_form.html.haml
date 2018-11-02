@@ -1,3 +1,11 @@
+- unless @movie.errors.empty?
+  %div{class: "uk-alert-warning", "uk-alert": true}
+    %a{class: "uk-alert-close", "uk-close": true}
+    %p Errors prevented this movie from being #{controller.action_name}d:
+    %ul
+      - @movie.errors.full_messages.each do |error|
+        %li= error
+
 %div{class: "uk-width-1-4"}
   = label :movie, :title, 'Title'
   = text_field :movie, 'title', class: "uk-input"

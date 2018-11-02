@@ -28,3 +28,4 @@ Scenario: Add a invalid movie
   And I press "Save Changes"
   #when invalid re render new page
   Then I should see "Create New Movie"
+  #And I should see "Title can't be blank"

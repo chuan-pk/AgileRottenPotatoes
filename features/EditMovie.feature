@@ -37,3 +37,4 @@ Scenario: Edit a invalid movie
   And I press "Save Changes"
   #re render movie edit page
   Then I should see "Edit Movie"
+  And I should see "Title can't be blank"

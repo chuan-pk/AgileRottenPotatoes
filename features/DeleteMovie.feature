@@ -8,5 +8,5 @@ Scenario: Delete Movie
   When I follow "More about Star Wars"
   And I press "Delete"
   Then I should be on the RottenPotatoes home page
-  And I should not see "Star Wars"
+  And I should see "'Star Wars' deleted"
   And I should see "Aladdin"
