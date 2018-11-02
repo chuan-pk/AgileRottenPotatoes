@@ -8,10 +8,19 @@
     = csrf_meta_tags
 
   %body
-    %nav{class: "uk-navbar-container uk-margin uk-light", style: "background: #E57373;"}
+    %nav{class: "uk-navbar-container uk-navbar-transparent  uk-margin", style: "background-image: linear-gradient(to right, #fa709a , #fee140);", "uk-navbar":true}
       %div{class: "uk-navbar-left"}
-        %div{class:"uk-navbar-item"}
+        %ul{class: "uk-navbar-nav"}
           %a{href: "/", class: "uk-navbar-item uk-logo"} RottenPotatoes!
+          %a{href: "/movies", class: "uk-navbar-item uk-logo"} Movies
+      - if @current_user
+        %div{class: "uk-navbar-right"}
+          %ul{class: "uk-navbar-nav"}
+            %li 
+              %label{class: "uk-navbar-item uk-logo"} Welcome, #{@current_user.name}!
+          %div{class:"uk-navbar-item"}
+            =button_to('Log Out', logout_path, :method => :post, class:"uk-button uk-button-text uk-width-1-1")
+
     %div{class: "uk-container"}
       -if flash[:notice]
         %div{class: "uk-alert-success", "uk-alert": true}
@@ -20,5 +29,4 @@
             = flash[:notice]
       -# - elsif flash[:warning]
       -#   #warning.message= flash[:warning]
-      = render partial: 'login_form'
       = yield
