@@ -1,5 +1,9 @@
 class MoviesController < ApplicationController
 
+  def welcome
+    #render 'welcome'
+  end
+
   def index
     @movies = Movie.all.sort_by{|m| m.title}
   end
