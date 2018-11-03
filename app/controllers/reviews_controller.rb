@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   def create
     @moviegoer = @current_user
     @movie = Movie.find(params[:movie_id])
-    allowed_params = params.require(:review).permit(:potatoes, :comment)
+    allowed_params = params.require(:review).permit(:potatoes, :comments)
     @review = Review.new(allowed_params)
     @review.movie_id = @movie.id
     @review.moviegoer_id = @moviegoer.id

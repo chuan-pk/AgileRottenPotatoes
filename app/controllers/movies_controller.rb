@@ -12,6 +12,13 @@ class MoviesController < ApplicationController
   def show
     id = params[:id]
     @movie = Movie.find(id)
+    @reviews = Review.where(movie_id: @movie.id).order("id DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:potatoes).round(2)
+    end
   end
 
   def new

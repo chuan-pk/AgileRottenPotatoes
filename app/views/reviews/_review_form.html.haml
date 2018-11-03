@@ -1,4 +1,7 @@
 %div{class: "uk-width-1-4"}
   %label How many potatoes:
   = select(:review, :potatoes, options_for_select(1..5), {}, {:class => "uk-select"})
+  %br
+  %label Comments:
+  = text_area :review, :comments, {class: "uk-textarea", rows: "5", style: "resize:none;"}
 %br
