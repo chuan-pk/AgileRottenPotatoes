@@ -3,12 +3,20 @@
     %div
       %div{class: "uk-card uk-card-small uk-card-default"} 
         %div{class: "uk-card-header"}
-          %h3{class:"uk-card-title"} RottenPotatoes
+          %h3{class:"uk-card-title"} RottenPotatoes!
         %div{class: "uk-card-body"}
-          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          %center
+            =image_tag("potato.png")
+          %p RottenPotatoes! is a review-aggregation website for movie.
         %div{class: "uk-card-footer"}
-          =link_to("Login with Facebook", '/auth/facebook', class:"uk-button uk-button-text") 
-          %br
-          =link_to("Login with Github", '/auth/github', class:"uk-button uk-button-text")          
-          %br          
-          =link_to("RottenPotatoes movie", movies_path, class:"uk-button uk-button-text")
+          %center
+            %div{class: "uk-grid-medium uk-child-width-auto uk-flex-inline uk-grid uk-grid-stack"}
+              %div{class: "uk-first-column"}
+                %a{href: '/auth/facebook', class:"uk-button uk-width-1-1 uk-button-large"}
+                  %span{"uk-icon": "facebook", class: "uk-margin-small-right uk-icon"}
+                  %span{class: "uk-text-middle"} Log in with Facebook
+              %div{class:true}
+                %a{href: '/auth/github', class:"uk-button uk-width-1-1 uk-button-large"}
+                  %span{"uk-icon": "github", class: "uk-margin-small-right uk-icon"}
+                  %span{class: "uk-text-middle"} Log in with Github
+          =link_to("RottenPotatoes movies page", movies_path, class:"uk-button uk-button-text uk-width-1-1")

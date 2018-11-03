@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :movies
   root :to => "movies#welcome"
   get  'auth/:provider/callback' => 'sessions#create'
-  post 'logout' => 'sessions#destroy'
+  get 'logout' => 'sessions#destroy'
   get  'auth/failure' => 'sessions#failure'
   get  'auth/facebook', :as => 'login_facebook'
   get  'auth/github', :as => 'login_github'

@@ -1,11 +1,4 @@
 %style
   body{background-image: linear-gradient(to right, #fa709a , #fee140);}
 
-#login
-  - if @current_user
-    %p.welcome  Welcome, #{@current_user.name}!
-    = button_to('Log Out', logout_path, :method => :post, class:"uk-button uk-button-text")
-  - else
-
-
 = render partial: 'login_form'

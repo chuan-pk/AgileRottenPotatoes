@@ -5,6 +5,7 @@
     = javascript_include_tag 'application'
     = stylesheet_link_tag 'uikit.min'
     = javascript_include_tag 'uikit.min'
+    = javascript_include_tag 'uikit-icons.min'
     = csrf_meta_tags
 
   %body
@@ -15,15 +16,33 @@
           %a{href: "/movies", class: "uk-navbar-item uk-logo"} Movies
       - if @current_user
         %div{class: "uk-navbar-right"}
-          %ul{class: "uk-navbar-nav"}
+          -# use Side nav when windows size too small
+          %ul{class: "uk-navbar-nav uk-visible@m"}
             %li 
               %label{class: "uk-navbar-item uk-logo"} Welcome, #{@current_user.name}!
-          %div{class:"uk-navbar-item"}
-            =button_to('Log Out', logout_path, :method => :post, class:"uk-button uk-button-text uk-width-1-1")
+          %div{class:"uk-navbar-item uk-visible@m"}
+            %a{href: '/logout', class:"uk-button uk-width-1-1 uk-button-large"}
+              %span{class: "uk-text-middle"} Log Out
+              %span{"uk-icon": "sign-out", class: "uk-margin-small-right uk-icon"}
+          %a{"uk-navbar-toggle-icon": true, href: "#offcanvas", "uk-toggle": true, class: "uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon"}
+
+    -# Side nav
+    %div{id: "offcanvas", "uk-offcanvas":"mode: push; overlay: true", class: "uk-offcanvas"}
+      %div{class:"uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-push"}
+        %div{class: "uk-panel"}
+          - if @current_user
+            %ul{class: "uk-nav uk-nav-default tm-nav"}
+              %li{class: "uk-nav-header"} Welcome
+              %li{} 
+                %h3 #{@current_user.name}!
+              %li{}
+                %a{href: '/logout', class:"uk-button"}
+                  %span{class: "uk-text"} Log Out
+                  %span{"uk-icon": "sign-out", class: "uk-margin-small-right uk-icon"}
 
     %div{class: "uk-container"}
       -if flash[:notice]
-        %div{class: "uk-alert-success", "uk-alert": true}
+        %div{class: "uk-alert-success uk-box-shadow-small", "uk-alert": true}
           %a{class: "uk-alert-close", "uk-close": true}
           %p
             = flash[:notice]

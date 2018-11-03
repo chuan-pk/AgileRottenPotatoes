@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
 
   def welcome
+    @current_user ||= Moviegoer.find_by(id: session[:user_id])
     #render 'welcome'
   end
 
