@@ -1,0 +1,6 @@
+%h2 New Review for #{@movie.title}
+
+= form_tag movie_reviews_path(@movie) do
+  = render(:partial => "review_form")  
+  = submit_tag 'Create Review', :class => "uk-button uk-button-primary uk-width-1-6"
+  = link_to('Cancel', movie_path(@movie), class: "uk-button uk-button-default uk-width-1-6")

@@ -46,6 +46,9 @@
           %a{class: "uk-alert-close", "uk-close": true}
           %p
             = flash[:notice]
-      -# - elsif flash[:warning]
-      -#   #warning.message= flash[:warning]
+      - elsif flash[:warning]
+        %div{class: "uk-alert-warning uk-box-shadow-small", "uk-alert": true}
+          %a{class: "uk-alert-close", "uk-close": true}
+          %p
+            = flash[:warning]
       = yield
