@@ -6,16 +6,16 @@
       - @movie.errors.full_messages.each do |error|
         %li= error
 
-%div{class: "uk-width-1-4"}
+%div{class: "uk-width-1-4@l uk-width-1-2@m"}
   = label :movie, :title, 'Title'
   = text_field :movie, 'title', class: "uk-input"
-%div{class: "uk-width-1-4"}
+%div{class: "uk-width-1-4@l uk-width-1-2@m"}
   = label :movie, :rating, 'Rating'
   = select(:movie, :rating, ['G','PG','PG-13','R','NC-17'], {}, {:class => "uk-select"})
-%div{class: "uk-width-1-4"}
+%div{class: "uk-width-1-4@l uk-width-1-2@m"}
   = label :movie, :release_date, 'Released On'
   = date_select(:movie, :release_date, {start_year: 1930, end_year: Date.today.year}, {:class => "uk-select"})
-%div{class: "uk-width-1-2"}
+%div{class: "uk-width-1-2@l"}
   = label :movie, :description, 'Description'
   = text_area :movie, 'description', {class: "uk-textarea", rows: "5", style: "resize:none;"} 
 %br
