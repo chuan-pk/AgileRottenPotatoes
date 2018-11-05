@@ -1,22 +1,41 @@
-# Saas RottenPotatoes Rails Tutorial
+## Heroku Deploy
+Use the `heroku` branch 
+Clone this project 
+```
+git clone https://github.com/chuan-pk/AgileRottenPotatoes.git <folder>
+git checkout heroku
+# Add your App_ID and App_Secret in config/initializer/config_omninauth.rb
+git init
+git add .
+git commit -m <commit message>
+```
 
-install gem
+
+create heroku app or set remote to your app.
 ```
-bundle install
+heroku create								#create new app
+heroku git:remote -a <app name>				#set remote
 ```
-create `.env`
+
+force push heroku branch to heroku
 ```
-FACEBOOK_APP_ID=YOUR_APP_ID
-FACEBOOK_APP_SECRET=YOUR_APP_SECRET
-GITHUB_APP_ID=YOUR_APP_ID
-GITHUB_APP_SECRET=YOUR_APP_SECRET
+git push -f heroku heroku:master	
 ```
+
+
 migrate database
 ```
-rails db:migrate
-rails db:migrate RAILS_ENV=test
+heroku run rails db:migrate
+heroku run rails db:seed
 ```
-run server
+open app in browser
 ```
-dotenv rails server
+heroku open
 ```
+
+for reset database
+```
+heroku pg:reset
+```
+
+ref: https://devcenter.heroku.com/articles/getting-started-with-rails5
