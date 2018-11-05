@@ -1,0 +1,23 @@
+%div{class: "uk-position-center"}
+  %div{class: "uk-child-width-1-1", "uk-grid":true}
+    %div
+      %div{class: "uk-card uk-card-small uk-card-default"} 
+        %div{class: "uk-card-header"}
+          %h3{class:"uk-card-title"} RottenPotatoes!
+        %div{class: "uk-card-body"}
+          %center
+            =image_tag("potato.png")
+          %p RottenPotatoes! is a review-aggregation website for movie.
+        %div{class: "uk-card-footer"}
+          %center
+            -if not @current_user
+              %div{class: "uk-grid-medium uk-child-width-auto uk-flex-inline uk-grid uk-grid-stack"}
+                %div{class: "uk-first-column"}
+                  %a{href: '/auth/facebook', class:"uk-button uk-width-1-1 uk-button-large"}
+                    %span{"uk-icon": "facebook", class: "uk-margin-small-right uk-icon"}
+                    %span{class: "uk-text-middle"} Log in with Facebook
+                %div{class:true}
+                  %a{href: '/auth/github', class:"uk-button uk-width-1-1 uk-button-large"}
+                    %span{"uk-icon": "github", class: "uk-margin-small-right uk-icon"}
+                    %span{class: "uk-text-middle"} Log in with Github
+          =link_to("RottenPotatoes movies page", movies_path, class:"uk-button uk-button-text uk-width-1-1")

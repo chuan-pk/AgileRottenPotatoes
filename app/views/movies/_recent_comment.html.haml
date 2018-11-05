@@ -1,0 +1,12 @@
+-if @reviews.blank?
+  %p We don't have any reviews for #{@movie.title}.
+-else
+  - @reviews.reverse.last(5).reverse.each do |review|
+    %div{class: "uk-card uk-card-default uk-box-shadow-hover-medium uk-card-small uk-box-shadow-small uk-margin-bottom uk-width-1-1@m", style: "background-image: linear-gradient(to right, #e6e9f0 , #eef1f5);"}
+      %div{class: "uk-card-header"}
+        %p{class: "uk-card-title uk-margin-remove-bottom"} #{review.moviegoer.name}
+        %p{class: "uk-text-meta uk-margin-remove-top"} Score: #{review.potatoes}
+      -if review.comments.blank?
+      -else
+        %div{class: "uk-card-body"}
+          #{review.comments}

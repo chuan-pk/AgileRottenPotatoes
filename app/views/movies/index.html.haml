@@ -1,0 +1,13 @@
+%h1 All movies
+%a{class: "uk-button uk-button-primary", href: "movies/new"} Add new movie
+
+%table{class: "uk-table uk-table-divider", :id => "movies"}
+  %thead
+    %tr
+      %th 
+      %th Movie Title
+      %th Rating
+      %th Release Date
+      %th More Info
+  %tbody
+    = render(partial: "movies_table", locals: {movies: @movies})
