@@ -21,7 +21,7 @@
             %li 
               %label{class: "uk-navbar-item uk-logo"} Welcome, #{@current_user.name}!
           %div{class:"uk-navbar-item uk-visible@m"}
-            %a{href: '/logout', class:"uk-button uk-width-1-1 uk-button-large"}
+            %a{href: '/logout', class:"uk-button uk-width-1-1 uk-button-large", id: "logout"}
               %span{class: "uk-text-middle"} Log Out
               %span{"uk-icon": "sign-out", class: "uk-margin-small-right uk-icon"}
           %a{"uk-navbar-toggle-icon": true, href: "#offcanvas", "uk-toggle": true, class: "uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon"}

@@ -57,6 +57,11 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+When /^(?:|I )follow link by id "([^"]*)"$/ do |link_id|
+  page.find_by_id(link_id).click
+end
+
+
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
@@ -261,4 +266,8 @@ When /^There are some movies in database$/ do
   movies.each do |movie|
     Movie.create!(movie)
   end
+end
+
+Given /^I am log in with github$/ do
+  visit "/auth/github/"  
 end

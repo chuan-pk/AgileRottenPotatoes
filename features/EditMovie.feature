@@ -1,6 +1,7 @@
 Feature: User can edit detail of movies
 
 Scenario: Add new movie to database but spell the name wrong
+  Given I am log in with github
   Given I am on the RottenPotatoes home page
   When I follow "Add new movie"
   Then I should be on the Create New Movie page
@@ -17,6 +18,7 @@ Scenario: Add new movie to database but spell the name wrong
   Then I should be on the Star Wars Detail page
 
 Scenario: Cancel edit movie
+  Given I am log in with github
   Given I am on the RottenPotatoes home page
   When I follow "Add new movie"
   Then I should be on the Create New Movie page
@@ -29,6 +31,7 @@ Scenario: Cancel edit movie
   Then I should be on the Star Wars Detail page
 
 Scenario: Edit a invalid movie
+  Given I am log in with github
   When There are some movies in database
   Given I am on the Star Wars Detail page
   And I press "Edit info"

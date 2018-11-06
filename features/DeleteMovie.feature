@@ -1,6 +1,7 @@
 Feature: User can delete movie
 
 Scenario: Delete Movie
+  Given I am log in with github
   When There are some movies in database  
   Given I am on the RottenPotatoes home page
   And I should see "Star Wars"
