@@ -10,7 +10,7 @@ RSpec.describe MoviesController, :type => :controller do
     it "Should sort by aphabet" do
       movie1 = Movie.create!({title: "Star Wars", release_date: "25/4/1977", rating: "PG"})
       movie2 = Movie.create!({title: "Aladdin", release_date: "25/11/1992", rating: "G"})
-      movies = Movie.all.sort_by{|m| m.title}
+      movies = Movie.order(title: :ASC)
       expect(movies[0].title).to eq(movie2.title)
       expect(movies[1].title).to eq(movie1.title)
     end
