@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use haml for templates
 gem 'haml'
 gem 'rspec'
+gem 'rspec-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
