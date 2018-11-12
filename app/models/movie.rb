@@ -1,3 +1,5 @@
+require 'dotenv'
+
 class Movie < ActiveRecord::Base
   has_many :reviews
   has_many :moviesgoer, :through => :reviews
@@ -5,9 +7,11 @@ class Movie < ActiveRecord::Base
 
   class Movie::InvalidKeyError < StandardError ; end
 
-  def self.find_in_tmdb(string)
+  def self.find_in_tmdb(search_term)
+    @api_key = Dotenv.load('.env')['TMDB_API_KEY']
+    Tmdb::Api.key(@api_key)
     begin
-      Tmdb::Movie.find(string)
+      Tmdb::Movie.find(search_term)
     rescue Tmdb::InvalidApiKeyError
       raise Movie::InvalidKeyError, 'Invalid API key'
     end

@@ -1,11 +1,4 @@
-%h3 Search TMDb for a movie
-
-= form_tag({action: 'search_tmdb'}, method: :post, class: "uk-grid-small", "uk-grid": '') do
-  %label{:for => 'search_terms', class: "uk-form-label"} Search Terms
-  %div{class: "uk-width-1-4@l uk-width-1-2@m"}
-    = text_field '', 'search_terms', class: "uk-input"
-  %div{class: "uk-width-1-4@l uk-width-1-2@m"}
-    = submit_tag 'Search TMDb', :class => "uk-button uk-button-primary"
+= render(partial: "search_tmdb_form")
 
 %h1 All movies
 %a{class: "uk-button uk-button-primary", href: "movies/new"} Add new movie

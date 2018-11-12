@@ -6,7 +6,7 @@ describe MoviesController do
       @fake_results = [double('movie1'), double('movie2')]
     end
     it 'calls the model method that performs TMDb search' do
-      expect(Movie).to receive(:find_in_tmdb).with('hardware').and_return(fake_results)
+      expect(Movie).to receive(:find_in_tmdb).with('hardware').and_return(@fake_results)
       post :search_tmdb, :params => {search_terms: 'hardware'}
     end
     describe 'after valid search' do

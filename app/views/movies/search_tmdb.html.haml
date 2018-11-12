@@ -1,0 +1,21 @@
+= render(partial: "search_tmdb_form")
+
+%h1 Search TMDb Result
+%div{class: "uk-child-width-1-2@m", "uk-grid": true}
+  -@movies.each do |movie|
+    %div
+      %div{class: "uk-card uk-card-secondary uk-card-small uk-margin uk-box-shadow-medium"}
+        %div{class: "uk-card-media-top"}
+          =image_tag("https://image.tmdb.org/t/p/original#{movie.backdrop_path}")
+        %div{class: "uk-card-body"}
+          %h3{class: "uk-card-title"} 
+            #{movie.title}
+          %ui
+            %li release date: #{movie.release_date}
+            %li vote average: #{movie.vote_average}
+            %li vote count : #{movie.vote_count}
+            %p #{movie.overview}
+            %a{href: "https://www.themoviedb.org/movie/#{movie.id}", class: "uk-button uk-button-text"} Read more
+        %div{class: "uk-card-footer"}
+          %a{href: "#", class: "uk-button uk-button-text"} Add movie to RottenPotatoes
+          
