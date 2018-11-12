@@ -22,12 +22,15 @@ class ReviewsController < ApplicationController
   def create
     @moviegoer = @current_user
     @movie = Movie.find(params[:movie_id])
-    allowed_params = params.require(:review).permit(:potatoes, :comments)
     @review = Review.new(allowed_params)
     @review.movie_id = @movie.id
     @review.moviegoer_id = @moviegoer.id
     @review.save
     redirect_to movie_path(@movie)
+  end
+
+  def allowed_params
+    params.require(:review).permit(:potatoes, :comments)
   end
 
 end

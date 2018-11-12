@@ -6,10 +6,12 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @current_user ||= Moviegoer.find_by(id: session[:user_id])
     @movies = Movie.order(title: :ASC)
   end
 
   def show
+    @current_user ||= Moviegoer.find_by(id: session[:user_id])
     id = params[:id]
     @movie = Movie.find(id)
     @reviews = Review.where(movie_id: @movie.id).order("id DESC")

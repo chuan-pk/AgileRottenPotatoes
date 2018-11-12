@@ -1,11 +1,11 @@
 Feature: User can login with third party account
 
-Scenario: Visit login page
+Scenario: User can see the RottenPotatoes home page when not login
   Given I am on the home page
   Then I should see "Log in with Facebook"
   And I should see "Log in with Github"
   When I follow "RottenPotatoes movies page"
-  Then I should be on the home page
+  Then I should be on the RottenPotatoes home page
 
 Scenario: Log in with gihub account
   Given I am log in with github
