@@ -1,21 +1,20 @@
 require "rails_helper"
 
 RSpec.describe Movie, :type => :model do
-  describe "Movie model" do
-    it 'calls the model method to create movie' do
-      movie = Movie.create!(:title => 'Star Wars', :release_date => '25/4/1977', :rating => 'PG')
-
-      expect(movie.reload.title).to eq('Star Wars')
-      expect(movie.reload.release_date).to eq('25/4/1977')  
-      expect(movie.reload.rating).to eq('PG')   
+  describe 'searching Tmdb by keyword' do
+    context 'with valid API key' do
+      it 'calls Tmdb with title keywords' do
+        expect(Tmdb::Movie).to receive(:find).with('Inception')
+        Movie.find_in_tmdb('Inception')
+      end
     end
-    it "calls the model method to delete movie" do
-      movie1 = Movie.create!(:title => 'Star Wars', :release_date => '25/4/1977', :rating => 'PG')
-      movie2 = Movie.create!(:title => 'Aladdin', :release_date => '25/11/1992', :rating => 'G')
-      
-      expect(Movie.all.count).to eq(2)
-      movie2.destroy
-      expect(Movie.all.count).to eq(1)
+    context 'with invalid API key' do
+      before(:each) do
+        allow(Tmdb::Movie).to receive(:find).and_raise(Tmdb::InvalidApiKeyError)
+      end
+      it 'raises an InvalidKeyError' do
+        expect { Movie.find_in_tmdb('Inception') }.to raise_error(Movie::InvalidKeyError)
+      end
     end
   end
 end

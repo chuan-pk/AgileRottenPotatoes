@@ -1,3 +1,11 @@
+%h1 Search TMDb for a movie
+
+= form_tag :action => 'search_tmdb' do
+
+  %label{:for => 'search_terms'} Search Terms
+  = text_field_tag 'search_terms'
+  = submit_tag 'Search TMDb'
+
 %h1 All movies
 %a{class: "uk-button uk-button-primary", href: "movies/new"} Add new movie
 

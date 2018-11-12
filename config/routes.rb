@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   end
 
   root :to => "movies#welcome"
-  get  'auth/:provider/callback' => 'sessions#create'
+  get 'auth/:provider/callback' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
-  get  'auth/failure' => 'sessions#failure'
-  get  'auth/facebook', :as => 'login_facebook'
-  get  'auth/github', :as => 'login_github'
+  get 'auth/failure' => 'sessions#failure'
+  get 'auth/facebook', :as => 'login_facebook'
+  get 'auth/github', :as => 'login_github'
+  post 'search_tmdb' => 'movies#search_tmdb'
 end

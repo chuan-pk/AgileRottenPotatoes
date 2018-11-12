@@ -84,5 +84,5 @@ RSpec.describe MoviesController, :type => :controller do
       expect(Movie.find(movie.id).title).to eq("Spirited Away")
     end
   end
-  
+
 end

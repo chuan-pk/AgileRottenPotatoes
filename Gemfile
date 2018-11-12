@@ -70,3 +70,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 3rd-party login
 gem 'omniauth-facebook'
 gem 'omniauth-github'
+gem 'themoviedb'
