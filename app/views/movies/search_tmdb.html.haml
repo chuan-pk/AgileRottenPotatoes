@@ -6,7 +6,8 @@
     %div
       %div{class: "uk-card uk-card-secondary uk-card-small uk-margin uk-box-shadow-medium"}
         %div{class: "uk-card-media-top"}
-          =image_tag("https://image.tmdb.org/t/p/original#{movie.backdrop_path}")
+          -if not(movie.backdrop_path.nil?)
+            =image_tag("https://image.tmdb.org/t/p/original#{movie.backdrop_path}")
         %div{class: "uk-card-body"}
           %h3{class: "uk-card-title"} 
             #{movie.title}
@@ -17,5 +18,8 @@
             %p #{movie.overview}
             %a{href: "https://www.themoviedb.org/movie/#{movie.id}", class: "uk-button uk-button-text"} Read more
         %div{class: "uk-card-footer"}
-          %a{href: "#", class: "uk-button uk-button-text"} Add movie to RottenPotatoes
-          
+          -# call create in moviescontroller
+          -# no API to get rating from TMDb so set default rating to PG
+          =button_to("Add #{movie.title} to RottenPotatoes", '/movies', 
+            :method => :post, :params => {:movie => {title: movie.title, rating: "PG", release_date: movie.release_date, description: movie.overview}}, 
+            class: "uk-button uk-button-text") 
