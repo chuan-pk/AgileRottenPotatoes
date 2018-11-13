@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
     @current_user ||= Moviegoer.find_by(id: session[:user_id])
     id = params[:id]
     @movie = Movie.find(id)
+    render(:partial => 'movie', :object => @movie) if request.xhr?
     @reviews = Review.where(movie_id: @movie.id).order("id DESC")
 
     if @reviews.blank?
