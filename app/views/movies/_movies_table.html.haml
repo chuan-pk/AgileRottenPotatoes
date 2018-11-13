@@ -1,5 +1,5 @@
 - movies.each_with_index do |movie, index|
-  %tr
+  %tr{:class => (movie.rating)}
     %td= index + 1
     %td= movie.title 
     %td= movie.rating

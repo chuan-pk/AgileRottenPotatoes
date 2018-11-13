@@ -35,3 +35,63 @@ var MoviePopup = {
   }
 };
 $(MoviePopup.setup);
+
+var MovieListFilter = {
+  filter_G: function () {
+    // 'this' is *unwrapped* element that received event (checkbox)
+    if ($(G).is(':checked')) {
+      $('tr.G').show();
+    } else {
+      $('tr.G').hide();
+    };
+  },
+  filter_PG: function () {
+    // 'this' is *unwrapped* element that received event (checkbox)
+    if ($(PG).is(':checked')) {
+      $('tr.PG').show();
+    } else {
+      $('tr.PG').hide();
+    };
+  },
+  filter_PG_13: function () {
+    // 'this' is *unwrapped* element that received event (checkbox)
+    if ($(PG_13).is(':checked')) {
+      $('tr.PG-13').show();
+    } else {
+      $('tr.PG-13').hide();
+    };
+  },
+  filter_R: function () {
+    // 'this' is *unwrapped* element that received event (checkbox)
+    if ($(R).is(':checked')) {
+      $('tr.R').show();
+    } else {
+      $('tr.R').hide();
+    };
+  },
+  filter_NC: function () {
+    // 'this' is *unwrapped* element that received event (checkbox)
+    if ($(this).is(':checked')) {
+      $('tr.NC-17').show();
+    } else {
+      $('tr.NC-17').hide();
+    };
+  },
+  setup: function() {
+    // construct checkbox with label
+    var labelAndCheckbox =
+      $('<label for="filter">Rating: </label>' +
+        '<input type="checkbox" id="G" checked=true>G' +
+        '<input type="checkbox" id="PG" checked=true>PG' +
+        '<input type="checkbox" id="PG_13" checked=true>PG-13' +
+        '<input type="checkbox" id="R" checked=true>R' +
+        '<input type="checkbox" id="NC" checked=true>NC-17<br>' );
+    labelAndCheckbox.insertBefore('#movies');
+    $('#G').change(MovieListFilter.filter_G);
+    $('#PG').change(MovieListFilter.filter_PG);
+    $('#PG_13').change(MovieListFilter.filter_PG_13);
+    $('#R').change(MovieListFilter.filter_R);
+    $('#NC').change(MovieListFilter.filter_NC);
+  }
+}
+$(MovieListFilter.setup); // run setup function when document ready
