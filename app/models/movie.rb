@@ -2,7 +2,19 @@ class Movie < ActiveRecord::Base
   has_many :reviews
   has_many :moviesgoer, :through => :reviews
   before_save :capitalize_title
-  
+
+  class Movie::InvalidKeyError < StandardError ; end
+
+  def self.find_in_tmdb(search_term)
+    @api_key = "Dotenv.load('.env')['TMDB_API_KEY']"
+    Tmdb::Api.key(@api_key)
+    begin
+      Tmdb::Movie.find(search_term)
+    rescue Tmdb::InvalidApiKeyError
+      raise Movie::InvalidKeyError, 'Invalid API key'
+    end
+  end
+
   def capitalize_title
     self.title = self.title.split(/\s+/).map(&:downcase).
       map(&:capitalize).join(' ')
