@@ -1,4 +1,12 @@
-%p= @movie.description
-= link_to "More about this movie", movie_path(@movie)
-= link_to 'Edit Movie', edit_movie_path(@movie)
-= link_to 'Close', '', {:id => 'closeLink'} 
+%div{class: "uk-position-center"}
+  %div{class: "uk-card uk-card-secondary uk-hover"}
+    %div{class: "uk-card-body"}
+      %h3{class: "uk-card-title"} #{@movie.title} (#{@avg_review}/5)
+      %p= @movie.description
+    %div{class: "uk-card-footer"}
+      %div{class: "uk-first-column"}
+        = link_to "More about this movie", movie_path(@movie)
+      %div{class: ""}
+        = link_to 'Edit Movie', edit_movie_path(@movie)
+      %div{class: ""}    
+        = link_to 'Close', '', {:id => 'closeLink'} 

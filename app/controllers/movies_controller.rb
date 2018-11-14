@@ -14,7 +14,6 @@ class MoviesController < ApplicationController
     @current_user ||= Moviegoer.find_by(id: session[:user_id])
     id = params[:id]
     @movie = Movie.find(id)
-    render(:partial => 'movie', :object => @movie) if request.xhr?
     @reviews = Review.where(movie_id: @movie.id).order("id DESC")
 
     if @reviews.blank?
@@ -22,6 +21,7 @@ class MoviesController < ApplicationController
     else
       @avg_review = @reviews.average(:potatoes).round(2)
     end
+    render(:partial => 'movie', :object => @movie) if request.xhr?
   end
 
   def new
